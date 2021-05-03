@@ -1,0 +1,30 @@
+<project>
+<dependencies>
+
+        <dependency>
+            <groupId>com</groupId>
+            <artifactId>passwordsdk</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+        <!-- For Compress JS -->
+        <dependency>
+            <groupId>com.yahoo.platform.yui</groupId>
+            <artifactId>yuicompressor</artifactId>
+            <version>2.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sybase</groupId>
+            <artifactId>EccpressoFIPSJca</artifactId>
+            <version>7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.data</groupId>
+            <artifactId>EccpressoFIPS</artifactId>
+            <version>7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>tesdt</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.0</version>
+        </dependency>
