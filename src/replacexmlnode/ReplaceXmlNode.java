@@ -35,5 +35,4 @@ public class ReplaceXmlNode {
        
         return new String(in.readAllBytes(), StandardCharsets.UTF_8);
     }
-
 }
