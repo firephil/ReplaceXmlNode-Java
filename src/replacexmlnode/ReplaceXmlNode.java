@@ -17,18 +17,19 @@ public class ReplaceXmlNode {
     
     public static void main(String[] args) throws IOException {
         
-        String pom = readFile(ReplaceXmlNode.class.getResourceAsStream("pom-plain.xml"));
-        String web = readFile(ReplaceXmlNode.class.getResourceAsStream("pom-web.xml"));
+        String pom = readFile(ReplaceNode.class.getResourceAsStream("pom-plain.xml"));
+        String web = readFile(ReplaceNode.class.getResourceAsStream("pom-web.xml"));
         
         Document doc_web = Jsoup.parse(web,"",Parser.xmlParser());
         Document doc_pom = Jsoup.parse(pom,"",Parser.xmlParser());
         
-        Elements dependencies_web = doc_web. getElementsByTag("dependencies");
-        Elements dependencies_pom = doc_pom. getElementsByTag("dependencies");
-        dependencies_pom.clear();
-        dependencies_pom.addAll(dependencies_web);
-
-        Files.writeString(Paths.get("pom-plain_out.xml"),doc_pom.toString(),StandardOpenOption.CREATE);
+        Elements dependencies_web = doc_web. select("project>dependencies");       
+        doc_pom.select("project>dependencies").remove();
+        
+        doc_pom.select("project").first().appendChild(dependencies_web.first());       
+        
+        doc_pom.outputSettings().prettyPrint(false);
+        Files.write(Paths.get("pom-plain_out.xml"), doc_pom.toString().getBytes());
     }
     
     public static String readFile(InputStream in) throws IOException{
